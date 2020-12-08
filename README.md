@@ -1,3 +1,4 @@
+## Basics
 LINQ is implemented in two different ways:
  - Extension methods (they are actually called operators).
  - Query expression syntax: SQL-like syntax directly embedded into C#.
@@ -18,3 +19,12 @@ LINQ operators which are implemented as extension methods on IQueryable<T>, taki
 LINQ to entities and used for database and remote connections.
 
 Enumerable: IEnumerable - class which contains LINQ extension method definitions.
+
+## Immediate vs deffered
+Some operators are immediate:
+ - They iterate the entire collection as soon as they are invoked (example: Count(), ToArray())
+ Some operators are deferred:
+ - Calculation will only happen when you iterate the collection (example: Select())
+ - Deferred operations can be:
+    - Streaming - do not have to read all data before elements are yielded
+    - Non-streaming - must read all source data before they yield an element
