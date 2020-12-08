@@ -1,30 +1,16 @@
-## Basics
-LINQ is implemented in two different ways:
- - Extension methods (they are actually called operators).
- - Query expression syntax: SQL-like syntax directly embedded into C#.
- 
- LINQ operators are higher-order functions:
- - Functions taking functions e.g: Func<T, bool>
- 
- LINQ operators present a fluent interface
- - Calls can be chained Where().Select().ToList()
+# Introduction 
+The LINQ repository was created with the purpose of deeping dive more into LINQ (hah, really?), TDD and better unit testing approaches.
+Despite, it is just my learning process and some topics can be very ligth and easy to get into, I will try to find some cool approaches
+and new features which you hopefully have not face yet.
 
-IEnumerable<T>
+From start, I will try to maintain most common code conventions, right TDD and many other necessary things like code documentation (even if sometimes
+it can look for you like it is definitely too much, sorry for that), etc. One note, I will ommit git flow, due to lazyness, and code analizers (e.g. StyleCop), do to be more focused and aware of what I am duing (also resharper is not used), please forgive :)
 
-All collection types (List,Dictionary, array, etc.) implement this interface.
-LINQ operators which are implemented as extension methods on IEnumerable<T>, taking Func<> arguments are named
-LINQ to objects and used for in-memory objects.
-    
-LINQ operators which are implemented as extension methods on IQueryable<T>, taking Expression<> arguments are named
-LINQ to entities and used for database and remote connections.
+Anyway, try to have fun to look into code and critique it!
 
-Enumerable: IEnumerable - class which contains LINQ extension method definitions.
-
-## Immediate vs deffered
-Some operators are immediate:
- - They iterate the entire collection as soon as they are invoked (example: Count(), ToArray())
- Some operators are deferred:
- - Calculation will only happen when you iterate the collection (example: Select())
- - Deferred operations can be:
-    - Streaming - do not have to read all data before elements are yielded
-    - Non-streaming - must read all source data before they yield an element
+# Inspiration
+Here are some great readmes that use this format and speak to all three audiences, for reference and inspiration:
+- [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme).
+- [ASP.NET Core](https://github.com/aspnet/Home)
+- [Visual Studio Code](https://github.com/Microsoft/vscode)
+- [Chakra Core](https://github.com/Microsoft/ChakraCore)
