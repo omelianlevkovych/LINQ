@@ -8,7 +8,7 @@ namespace SpeedConverter
     {
         public int ConvertToMilesPerHour(int kilometersPerHour)
         {
-            return 0;
+            return (int)Math.Round(kilometersPerHour * 0.62137);
         }
     }
 }

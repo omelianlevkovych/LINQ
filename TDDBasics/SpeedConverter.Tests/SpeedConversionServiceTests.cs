@@ -3,32 +3,31 @@ using Xunit;
 
 namespace SpeedConverter.Tests
 {
-    public class SpeedConversionServiceTests
+    public class SpeedConversionServiceTests : IDisposable
     {
-        [Fact]
-        public void ConvertToMilesPerHour_0_0()
+        private readonly SpeedConversionService speedConverter;
+
+        public SpeedConversionServiceTests()
         {
-            // arrange
-            var speedConverter = new SpeedConversionService();
-
-            // act
-            var milesPerHour = speedConverter.ConvertToMilesPerHour(0);
-
-            //
-            Assert.Equal(0, milesPerHour);
+            speedConverter = new SpeedConversionService();
         }
 
-        [Fact]
-        public void ConvertToMilesPerHour_10_6()
+
+        [Theory]
+        [InlineData(0, 0)]
+        [InlineData(10, 6)]
+        [InlineData(11, 7)]
+        [InlineData(20, 12)]
+        public void ConvertToMilesPerHour_Input_Expected(int input, int expected)
         {
-            // arrange
-            var speedConverter = new SpeedConversionService();
+            var milesPerHour = speedConverter.ConvertToMilesPerHour(input);
 
-            // act
-            var milesPerHour = speedConverter.ConvertToMilesPerHour(10);
+            Assert.Equal(expected, milesPerHour);
+        }
 
-            //
-            Assert.Equal(6, milesPerHour);
+        public void Dispose()
+        {
+            // nothing to dispose here!
         }
     }
 }
