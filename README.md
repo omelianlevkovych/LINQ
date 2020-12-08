@@ -1,5 +1,5 @@
 # Introduction 
-The LINQ repository was created with the purpose of deeping dive more into LINQ (hah, really?), TDD and better unit testing approaches.
+The LINQ repository was created with the purpose of diving deeper more into LINQ (hah, really?), TDD and better unit testing approaches.
 Despite, it is just my learning process and some topics can be very ligth and easy to get into, I will try to find some cool approaches
 and new features which you hopefully have not face yet.
 
