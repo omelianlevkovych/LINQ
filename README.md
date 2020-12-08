@@ -1,10 +1,10 @@
 # Introduction 
-The LINQ repository was created with the purpose of deeping dive more into LINQ (hah, really?), TDD and better unit testing approaches.
+The LINQ repository was created with the purpose of diving deeper more into LINQ (hah, really?), TDD and better unit testing approaches.
 Despite, it is just my learning process and some topics can be very ligth and easy to get into, I will try to find some cool approaches
 and new features which you hopefully have not face yet.
 
 From start, I will try to maintain most common code conventions, right TDD and many other necessary things like code documentation (even if sometimes
-it can look for you like it is definitely too much, sorry for that), etc. One note, I will ommit git flow, due to lazyness, and code analizers (e.g. StyleCop), do to be more focused and aware of what I am duing (also resharper is not used), please forgive :)
+it can look for you like it is definitely too much, sorry for that), etc. One note, I will ommit git flow, due to lazyness, and code analizers (e.g. StyleCop), do to be more focused and aware of what I am doing (also resharper is not used), please forgive :)
 
 Anyway, try to have fun to look into code and critique it!
 
