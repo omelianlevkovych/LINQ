@@ -28,4 +28,3 @@ Some operators are immediate:
  - Deferred operations can be:
     - Streaming - do not have to read all data before elements are yielded
     - Non-streaming - must read all source data before they yield an element
-guxsag
