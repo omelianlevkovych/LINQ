@@ -8,7 +8,7 @@ namespace SpeedConverter
     {
         public int ConvertToMilesPerHour(int kilometersPerHour)
         {
-            return -1;
+            return 0;
         }
     }
 }
