@@ -10,3 +10,32 @@ Uncle Bob describes it this way:
 - 3. You are not allowed any more prod code than is sufficient to pass the one failig unit test.
 
 Red-Green-Refactor!
+
+## Linq reimpementation:
+
+## Where
+Source code:
+public static IEnumerable<TSource> Where(
+    this IEnumerable<TSource> source,
+    Func<TSource, bool> predicate)
+
+// Lets the predicate use the index withit the sequence as well as the value. The index always starts at 0, and increments by 1 each time regardless
+// of previous result from the predicate.
+public static IEnumerable<TSource> Where(
+    this IEnumerable<TSource> source,
+    Func<TSource, int, bool> predicate)
+
+Behaviour:
+ - You should not be able to modify the input sequence (source param).
+ - The Where is deferred operator - until you go throw the IEnumerable, it won'tt start fetching items from the input sequence
+ - Despite deferred execution, Where will validate that the parameters are not null immediately
+ - It streams it result: it only ever needs to look at one result at a time, and will yield it without keeping a reference to it.
+ This means you can apply it to an infinitely long sequence
+ - It will iterate over the input sequence exactly once each time you iterate over the output sequence
+ - Disposing of an iterator over the output sequence will dispose of the corresponding iterator over the input sequence.
+ (In case you did not know, the foreach statement in C# uses a try/finally block to make sure the iterator is always disposed when loop finishes.)
+
+## Conclusion
+ - Linq to Object is based on extension methods, delegates and IEnumerable<T>.
+ - Operator do not mutate the original source, but instead return a new sequence which will return the appropriate data.
+ - Query expressions are based on compiler translations (no need additional implementation for query).
