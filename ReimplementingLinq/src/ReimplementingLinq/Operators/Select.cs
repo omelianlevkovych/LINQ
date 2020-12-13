@@ -23,18 +23,18 @@ namespace ReimplementingLinq.Operators
             if (source == null) throw new ArgumentNullException(nameof(source));
             if (selector == null) throw new ArgumentNullException(nameof(selector));
 
-                return SelectImplementation(source, selector);
+                return SelectIterator(source, selector);
         }
 
         /// <summary>
-        /// The Select operator implementation part.
+        /// The Select operator iterator.
         /// </summary>
         /// <typeparam name="TSource">The source type.</typeparam>
         /// <typeparam name="TResult">The selector result type.</typeparam>
         /// <param name="source">The source.</param>
         /// <param name="selector">The selector.</param>
         /// <returns>The <see cref="IEnumerable{TResult}"/></returns>
-        public static IEnumerable<TResult> SelectImplementation<TSource, TResult>(
+        private static IEnumerable<TResult> SelectIterator<TSource, TResult>(
             this IEnumerable<TSource> source,
             Func<TSource, TResult> selector)
         {
@@ -59,18 +59,18 @@ namespace ReimplementingLinq.Operators
             if (source == null) throw new ArgumentNullException(nameof(source));
             if (selector == null) throw new ArgumentNullException(nameof(selector));
 
-            return WhereImplementation(source, selector);
+            return WhereIterator(source, selector);
         }
 
         /// <summary>
-        /// The Select operator with index, implementation part.
+        /// The Select operator with index iterator.
         /// </summary>
         /// <typeparam name="TSource">The source type.</typeparam>
         /// <typeparam name="TResult">The selector result type.</typeparam>
         /// <param name="source">The source.</param>
         /// <param name="selector">The selector.</param>
         /// <returns>The <see cref="IEnumerable{T}"/></returns>
-        public static IEnumerable<TResult> WhereImplementation<TSource, TResult>(
+        private static IEnumerable<TResult> WhereIterator<TSource, TResult>(
             this IEnumerable<TSource> source,
             Func<TSource, int, TResult> selector)
         {
