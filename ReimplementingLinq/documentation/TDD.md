@@ -35,7 +35,7 @@ Behaviour:
  - Disposing of an iterator over the output sequence will dispose of the corresponding iterator over the input sequence.
  (In case you did not know, the foreach statement in C# uses a try/finally block to make sure the iterator is always disposed when loop finishes.)
 
- ## Select
+## Select
 public static IEnumerable<TResult> Select<TSource, TResult>(
     this IEnumerable<TSource> source,
     Func<TSouce, TResult> selector)
@@ -53,6 +53,14 @@ Behaviour:
  This means you can apply it to an infinitely long sequence.
  - It will iterate over the input sequence exactly once each time you iterate over the output sequence.
  - Disposing of an iterator over the output sequence will dispose of the corresponding iterator over the input sequence.
+
+## Range
+public static IEnumerable<int> Range(
+    int start,
+    int count)
+
+Generates a sequence of integral numbers within a specified range.
+
 
 ## Conclusion
  - Linq to Object is based on extension methods, delegates and IEnumerable<T>.

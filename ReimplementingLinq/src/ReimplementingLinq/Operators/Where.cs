@@ -22,17 +22,17 @@ namespace ReimplementingLinq.Operators
             if (source == null) throw new ArgumentNullException(nameof(source));
             if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
-            return WhereImplementation(source, predicate);
+            return WhereIterator(source, predicate);
         }
 
         /// <summary>
-        /// The Where operator implementation part.
+        /// The Where operator iterator.
         /// </summary>
         /// <typeparam name="TSource">The source type.</typeparam>
         /// <param name="source">The source.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>The <see cref="IEnumerable{T}"/></returns>
-        public static IEnumerable<TSource> WhereImplementation<TSource>(
+        private static IEnumerable<TSource> WhereIterator<TSource>(
             this IEnumerable<TSource> source,
             Func<TSource, bool> predicate)
         {
@@ -59,17 +59,17 @@ namespace ReimplementingLinq.Operators
             if (source == null) throw new ArgumentNullException(nameof(source));
             if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
-            return WhereImplementation(source, predicate);
+            return WhereIterator(source, predicate);
         }
 
         /// <summary>
-        /// The Where operator with index, implementation part.
+        /// The Where operator with index iterator.
         /// </summary>
         /// <typeparam name="TSource">The source type.</typeparam>
         /// <param name="source">The source.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>The <see cref="IEnumerable{T}"/></returns>
-        public static IEnumerable<TSource> WhereImplementation<TSource>(
+        private static IEnumerable<TSource> WhereIterator<TSource>(
             this IEnumerable<TSource> source,
             Func<TSource, int, bool> predicate)
         {
