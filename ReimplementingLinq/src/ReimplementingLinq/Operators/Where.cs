@@ -77,15 +77,14 @@ namespace ReimplementingLinq.Operators
             this IEnumerable<TSource> source,
             Func<TSource, int, bool> predicate)
         {
-            var index = 0;
+            var index = -1;
             foreach (var item in source)
             {
+                checked { ++index; }
                 if (predicate(item, index))
                 {
                     yield return item;
                 }
-
-                ++index;
             }
         }
 
