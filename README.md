@@ -1,3 +1,5 @@
+## Repository description
+The repo contains few projects which have very wide range of complexity. The main part is located in ReimplementingLinq solution, It has most .Net Linq operators reimplementation and interesting notes as part of the documentation. Other solutions touches the land of TDD and unit testing best practices using XUnit and NUnit frameworks. The whole repo is a kid of a specter with functional programming and object oriented/imperative programming style.
 # Introduction 
 The LINQ repository was created with the purpose of diving deeper more into LINQ (hah, really?), TDD and better unit testing approaches.
 Despite, it is just my learning process and some topics can be very ligth and easy to get into, I will try to find some cool approaches
