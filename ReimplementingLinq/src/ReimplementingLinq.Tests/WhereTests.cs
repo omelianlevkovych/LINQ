@@ -20,9 +20,9 @@ namespace ReimplementingLinq.Tests
         {
             // arrange
             IEnumerable<int> source = new Collection<int> {2, 2, 8, 1, 4, -5, 0, 4, -3};
+            var predicate = new Func<int, bool>(x => x < 2);
 
             // act
-            var predicate = new Func<int, bool>(x => x < 2);
             var result = source.Where(predicate);
             
             // assert

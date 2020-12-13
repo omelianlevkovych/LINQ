@@ -27,13 +27,32 @@ public static IEnumerable<TSource> Where(
 
 Behaviour:
  - You should not be able to modify the input sequence (source param).
- - The Where is deferred operator - until you go throw the IEnumerable, it won'tt start fetching items from the input sequence
- - Despite deferred execution, Where will validate that the parameters are not null immediately
+ - The Where is deferred operator - until you go throw the IEnumerable, it won'tt start fetching items from the input sequence.
+ - Despite deferred execution, Where will validate that the parameters are not null immediately.
  - It streams it result: it only ever needs to look at one result at a time, and will yield it without keeping a reference to it.
- This means you can apply it to an infinitely long sequence
- - It will iterate over the input sequence exactly once each time you iterate over the output sequence
+ This means you can apply it to an infinitely long sequence.
+ - It will iterate over the input sequence exactly once each time you iterate over the output sequence.
  - Disposing of an iterator over the output sequence will dispose of the corresponding iterator over the input sequence.
  (In case you did not know, the foreach statement in C# uses a try/finally block to make sure the iterator is always disposed when loop finishes.)
+
+ ## Select
+public static IEnumerable<TResult> Select<TSource, TResult>(
+    this IEnumerable<TSource> source,
+    Func<TSouce, TResult> selector)
+
+public static IEnumeralbe<TResult> Select<TSource, TResult>(
+    this IEnumerable<TSource> source,
+    Func<TSource, int, TResult> selector)
+
+Behaviour:
+ - The operator extrapolate one sequence to another: the 'selector' delegate is applied to each input to yield the output element.
+ - You should not be able to modify the input sequence (source param).
+ - The Where is deferred operator - until you go throw the IEnumerable, it won'tt start fetching items from the input sequence.
+ - Despite deferred execution, Where will validate that the parameters are not null immediately.
+ - It streams it result: it only ever needs to look at one result at a time, and will yield it without keeping a reference to it.
+ This means you can apply it to an infinitely long sequence.
+ - It will iterate over the input sequence exactly once each time you iterate over the output sequence.
+ - Disposing of an iterator over the output sequence will dispose of the corresponding iterator over the input sequence.
 
 ## Conclusion
  - Linq to Object is based on extension methods, delegates and IEnumerable<T>.
