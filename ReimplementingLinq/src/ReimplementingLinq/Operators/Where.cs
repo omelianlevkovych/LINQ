@@ -19,10 +19,8 @@ namespace ReimplementingLinq.Operators
             this IEnumerable<TSource> source,
             Func<TSource, bool> predicate)
         {
-            if (source == null || predicate == null)
-            {
-                throw new ArgumentNullException();
-            }
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
             return WhereImplementation(source, predicate);
         }
@@ -58,10 +56,8 @@ namespace ReimplementingLinq.Operators
             this IEnumerable<TSource> source,
             Func<TSource, int, bool> predicate)
         {
-            if (source == null || predicate == null)
-            {
-                throw new ArgumentNullException();
-            }
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
             return WhereImplementation(source, predicate);
         }
