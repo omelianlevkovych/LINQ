@@ -14,7 +14,7 @@ namespace ReimplementingLinq.Operators
         /// </summary>
         /// <param name="start">The start.</param>
         /// <param name="count">The count.</param>
-        /// <returns></returns>
+        /// <returns>The count values range starting from <see cref="start"/> element.</returns>
         public static IEnumerable<int> Range(int start, int count)
         {
             long max = ((long) start) + count - 1;
@@ -27,7 +27,7 @@ namespace ReimplementingLinq.Operators
         /// </summary>
         /// <param name="start">The start.</param>
         /// <param name="count">The count.</param>
-        /// <returns></returns>
+        /// <returns>The range iterator.</returns>
         static IEnumerable<int> RangeIterator(int start, int count)
         {
             for (int i = 0; i < count; ++i)
