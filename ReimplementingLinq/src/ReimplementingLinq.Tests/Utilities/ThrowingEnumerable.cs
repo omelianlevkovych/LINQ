@@ -14,7 +14,7 @@ namespace ReimplementingLinq.Tests.Utilities
         /// <summary>
         /// The methods throws <see cref="InvalidOperationException"/>.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Should throw <see cref="InvalidOperationException"/></returns>
         public IEnumerator<T> GetEnumerator()
         {
             throw new InvalidOperationException();

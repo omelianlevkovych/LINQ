@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ReimplementingLinq
 {
@@ -14,6 +15,24 @@ namespace ReimplementingLinq
         static void Main(string[] args)
         {
             Console.WriteLine("Lets create some nasty linqs!");
+
+            // Example how iterator actually works.
+            foreach (string x in GetDemoEnumerable())
+            {
+                Console.WriteLine(x);
+            }
+        }
+
+        private static IEnumerable<string> GetDemoEnumerable()
+        {
+            yield return "start";
+
+            for (int i = 0; i < 5; i++)
+            {
+                yield return i.ToString();
+            }
+
+            yield return "end";
         }
     }
 }

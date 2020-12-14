@@ -10,3 +10,4 @@ D:\personal\linq\ReimplementingLinq\src\ReimplementingLinq\obj\Debug\netcoreapp3
 D:\personal\linq\ReimplementingLinq\src\ReimplementingLinq\obj\Debug\netcoreapp3.1\ReimplementingLinq.dll
 D:\personal\linq\ReimplementingLinq\src\ReimplementingLinq\obj\Debug\netcoreapp3.1\ReimplementingLinq.pdb
 D:\personal\linq\ReimplementingLinq\src\ReimplementingLinq\obj\Debug\netcoreapp3.1\ReimplementingLinq.genruntimeconfig.cache
+D:\personal\linq\ReimplementingLinq\src\ReimplementingLinq\obj\Debug\netcoreapp3.1\ReimplementingLinq.csprojAssemblyReference.cache

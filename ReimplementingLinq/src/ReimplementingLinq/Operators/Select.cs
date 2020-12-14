@@ -69,7 +69,7 @@ namespace ReimplementingLinq.Operators
         /// <typeparam name="TResult">The selector result type.</typeparam>
         /// <param name="source">The source.</param>
         /// <param name="selector">The selector.</param>
-        /// <returns>The <see cref="IEnumerable{T}"/></returns>
+        /// <returns>The <see cref="IEnumerable{T}"/>.</returns>
         private static IEnumerable<TResult> WhereIterator<TSource, TResult>(
             this IEnumerable<TSource> source,
             Func<TSource, int, TResult> selector)
