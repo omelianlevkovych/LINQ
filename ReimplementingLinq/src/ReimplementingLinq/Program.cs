@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ReimplementingLinq
 {
@@ -17,22 +18,29 @@ namespace ReimplementingLinq
             Console.WriteLine("Lets create some nasty linqs!");
 
             // Example how iterator actually works.
-            foreach (string x in GetDemoEnumerable())
-            {
-                Console.WriteLine(x);
-            }
+            var names = new List<string> { "x", "y" };
+            var age = new List<int> { 2, 1 };
+            PrintNamesAndAges(names, age);
         }
 
-        private static IEnumerable<string> GetDemoEnumerable()
+        static void PrintNamesAndAges(IEnumerable<string> names, IEnumerable<int> ages)
         {
-            yield return "start";
-
-            for (int i = 0; i < 5; i++)
+            using IEnumerator<int> ageIterator = ages.GetEnumerator();
             {
-                yield return i.ToString();
-            }
+                foreach (string name in names)
+                {
+                    if (!ageIterator.MoveNext())
+                    {
+                        throw new ArgumentException("Not enough ages");
+                    }
+                    Console.WriteLine("{0} is {1} years old", name, ageIterator.Current);
+                }
+                if (ageIterator.MoveNext())
+                {
+                    throw new ArgumentException("Not enough names");
+                }
 
-            yield return "end";
+            }
         }
     }
 }

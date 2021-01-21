@@ -37,8 +37,6 @@ namespace ReimplementingLinq.Tests
             Assert.NotSame(Enumerable.Empty<string>(), Enumerable.Empty<object>());
             Assert.NotSame(Enumerable.Empty<object>(), Enumerable.Empty<long>());
             Assert.NotSame(Enumerable.Empty<long>(), Enumerable.Empty<string>());
-
-
         }
     }
 }

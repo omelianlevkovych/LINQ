@@ -23,7 +23,7 @@ namespace ReimplementingLinq.Operators
             if (source == null) throw new ArgumentNullException(nameof(source));
             if (selector == null) throw new ArgumentNullException(nameof(selector));
 
-                return SelectIterator(source, selector);
+            return SelectIterator(source, selector);
         }
 
         /// <summary>
