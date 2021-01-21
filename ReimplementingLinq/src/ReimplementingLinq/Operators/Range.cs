@@ -7,7 +7,7 @@ namespace ReimplementingLinq.Operators
     /// <summary>
     /// The class which contains all rewritten LINQ, in this file Where operator.
     /// </summary>
-    public partial class Enumerable
+    public static partial class Enumerable
     {
         /// <summary>
         /// The Range static method, validation part.

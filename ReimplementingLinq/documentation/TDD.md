@@ -106,7 +106,7 @@ public static IEnumerable<TSource> Where(
 
 Behaviour:
  - You should not be able to modify the input sequence (source param).
- - The Where is deferred operator - until you go throw the IEnumerable, it won'tt start fetching items from the input sequence.
+ - The Where is deferred operator - until you go throw the IEnumerable, it won't start fetching items from the input sequence.
  - Despite deferred execution, Where will validate that the parameters are not null immediately.
  - It streams it result: it only ever needs to look at one result at a time, and will yield it without keeping a reference to it.
  This means you can apply it to an infinitely long sequence.
@@ -150,3 +150,32 @@ Empty does cahce an empty sequence.
  - Linq to Object is based on extension methods, delegates and IEnumerable<T>.
  - Operator do not mutate the original source, but instead return a new sequence which will return the appropriate data.
  - Query expressions are based on compiler translations (no need additional implementation for query).
+
+
+Side notes (mostly for blog post):
+Q: What exactly collection type should I return from my API e.g ICollection, Collection, IList
+A: Generally we should always return a type that is as general as possible. That way we will have
+greater freedom to change the implementation of the API, without breaking the code that it is using. For instance,
+in case the result is only going to be iterated we can consider IEnumerable<T>.
+
+IEnumerable, ICollection, IList, IQueryable holds a nested list maintaining the order of items.
+1)An IEnumerable is simplier to imagine as a container for some items. You are allowed only to iterate
+through each element in the IEnumeralbe.
+All what IEnumerable has is an enumerator that helps in iterating over the elements.
+2)ICollection is another type of collection, which derives from IEnumerable and extend it's functionality
+to add, remove, update elements in the list. ICollection also holds the count of the elements in it and we
+does not need to iterate over all elements to get total number of elements.
+3)IList extend ICollection. Except from previous operations over the items in the list it has additional
+operations like inserting or removing the element in the middle of a list.
+4)IQueryable inherits from the IEnumerable and it generates a LINQ to SQL expression that is executed over the database layer.
+Instead of the generating a Func<T, bool> like the ones above, IQueryable generates an expression tree and gives Expression<Func<T, bool>> that is executed over the database layer to get data set.
+
+
+Q: Why do we separate validation and actual iteration logic in deffered linq operators? Isn't it easier to just put it in
+one method?
+A: In that case validation will not work. When we have a deferred execution until we start to iterate over the result, none 
+of the code will run! We’ve just hit a design flaw in C#. Iterator blocks in C# simply don’t work nicely when you want to split execution between "immediate" (usually for validation) and "deferred". Instead, we have to split our implementation into two: a normal method for validation, which then calls the iterator method for the deferred processing.
+
+Mote: Now, if you're interested in the difference between IEnumerator<T> and IEnumerable<T>, you might want to think of it in database terms: think of IEnumerable<T> as a table, and IEnumerator<T> as a cursor. You can ask a table to give you a new cursor, and you can have multiple cursors over the same table at the same time.
+
+It can take a while to really grok this difference, but just remembering that a list (or array, or whatever) doesn't have any concept of "where you are in the list" but an iterator over that list/array/whatever does have that bit of state is helpful.
